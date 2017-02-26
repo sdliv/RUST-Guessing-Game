@@ -1,11 +1,18 @@
+extern crate rand;
+
 use std::io;
+use rand::Rng;
 
 fn main() {
     println!("Guess the number!");
 
+    let secret_number = rand::thread_rng().gen_range(1, 101); // uses the 'rand' crate
+
+    println!("The secret number is: {}", secret_number);
+
     println!("Please input your guess.");
     
-    let mut guess = String::new();
+    let mut guess = String::new(); // this variable is mutable due to the key word 'mut'. Rust variables are immutable by default
 
     io::stdin().read_line(&mut guess)
         .expect("Failed to read line");
